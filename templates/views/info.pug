@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='/styles/main.css')
+    meta( name='viewport', content='width=device-width, initial-scale=1' )
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='/scripts/fittext.js')
+    script(src='/scripts/lazyload.js')
+    script(src='/scripts/main.js')
+    title= "info"
+  body(class='info')
+    - var mailto = 'mailto:' + about[0].contact_email
+    include includes/navigation.pug
+    div( id='bigtext' class=['info-header']) INFO
+    div(class=['info-container'])
+      div(class=['info-featured', 'secondary-navigation'])
+        a(href='/#featured-projects') Featured Projects 
+          span →
+      div(class='info-section-1')!= about[0].about_fgm_text
+        a(class=['mailto'], href=mailto) ↳ hit us up
+      div(class='info-section-2')
+        img(src=about[0].banner_image.url)
+      div(class='info-section-3')!= about[0].continued_text
+      div(class=['info-overview', 'tertiary-navigation'])
+        span Company Overview 
+        span →
+      div(class='info-section-4')
+        div(class='info-section-4-left')
+          img(src=about[0].company_overview_image.url)
+        div(class='info-section-4-right')!= about[0].company_overview_text
+      div(class='info-section-5')
+        div(class='select-clients')!= about[0].select_clients
+        div(class='teaching-lectures')!= about[0].teaching_lectures
+        div(class='awards-press')!= about[0].awards_press
+      div(class=['info-other', 'fourth-navigation'])
+        span Jobs and Internships 
+        span →
+      div(class='info-section-6')
+        div(class='job-left')
+          strong Jobs
+          p!= about[0].job_blurb
+          a(href=about[0].contact_email) ↳ Get In Touch
+        div(class='job-right')
+          strong Currently Looking For
+          p!= about[0].currently_looking
+    include includes/footer.pug

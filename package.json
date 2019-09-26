@@ -1,0 +1,16 @@
+{
+  "name": "for_good_measure",
+  "version": "1.0.0",
+  "description": "Portfolio website for For Good Measure Studio",
+  "main": "index.js",
+  "scripts": {
+    "start": "node keystone.js"
+  },
+  "author": "Aarati Akkapeddi",
+  "license": "ISC",
+  "dependencies": {
+    "keystone": "^4.0.0",
+    "keystone-storage-adapter-s3": "2.0.0",
+    "pug": "^2.0.3"
+  }
+}

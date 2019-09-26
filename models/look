@@ -1,0 +1,538 @@
+
+
+<script>  
+console.log('wut')
+jQuery(document).ready(function () {
+	//if(window.innerHeight < window.innerWidth){
+		     jQuery('#splash-wrapper').find('.exploding').remove();
+			 jQuery('#splash-wrapper').find('canvas').remove();
+			 jQuery('#splash-wrapper').find('p.look').remove();
+		// }   
+	var first = true;
+	var drop = false
+    console.log("i'm running")
+	/* semi-global variables*/
+	var bgcolor = '#0000ff'
+	var w = jQuery('#splash-wrapper').width()
+	var textHeight = jQuery('#is-studio').height()
+    // var navbar = jQuery('.navbar').outerHeight()
+    var navbar = 0
+    console.log(navbar)
+    var h = jQuery(window).height() - textHeight
+    console.log(w,h)
+	/*Helper functions*/
+	      var fontSize;
+	      var drawingWidth;
+	      var drawingHeight;
+	   if(w > 768){
+	            fontSize = 100
+	            drawingWidth = 290
+	            drawingHeight = 90
+	            
+	        }else{
+	            fontSize = 30
+	            drawingWidth = 138
+	            drawingHeight = 88
+	        }
+	/* Turn text into image path for physics stuff */
+	function createImage($string){
+	        
+		    let drawing = document.createElement("canvas");
+		    
+		    
+
+	            drawing.width = drawingWidth.toString()
+	            drawing.height = drawingHeight.toString()
+
+		    let ctx = drawing.getContext("2d");
+		    ctx.fillStyle = "rgba(0,0,255,0)";
+		    ctx.beginPath();
+		    ctx.arc(75, 75, 20, 0, Math.PI * 2, true);
+		    ctx.closePath();
+		    ctx.fill();
+		    ctx.fillStyle = "#000";
+		    ctx.font = fontSize + "px sans-serif";
+		    ctx.textAlign = "left";
+		    ctx.fillText($string, 75, 85);
+		    return drawing.toDataURL("image/png");
+		}
+
+
+    /* create a random integer within a range */
+    function getRandomInt(min, max) {
+	  return Math.floor(Math.random() * (max - min + 1) + min);
+	}
+ 	/* *********************************** */
+ 	/* ******* SPLASH PAGE OPTIONS ******* */
+    /* *********************************** */
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* ~~~~~~~~ 1: physics/drops~~~~~~~~~ */
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+    function dropLook(){
+    	var drop = true
+       var friction;
+       var friction2;
+		if (w < 768) {
+			friction = 0
+			friction2 = 0
+		} else{
+			friction = 0.06
+			friction2 = 0.01
+		}
+		   // module aliases
+		var Engine = Matter.Engine,
+		    Render = Matter.Render,
+		    World = Matter.World,
+		    Common = Matter.Common,
+		    Bodies = Matter.Bodies;
+        var $canvas = jQuery('<canvas id="good-canvas"></canvas>');
+        $canvas.appendTo('#splash-wrapper')
+		// create an engine
+		var engine = Engine.create();
+		
+		// create a renderer
+
+	
+		var render = Render.create({
+		    element: document.getElementById('splash-wrapper'),
+		    canvas: document.getElementById('good-canvas'),
+		    engine: engine,
+		    options: {
+		    	background: 'rgba(0,0,0,0)',
+		    	width: w,
+		    	wireframes:false,
+        		height: h - navbar,
+		    }
+		});
+		var image = createImage('LOOK')
+		// create two boxes and a ground
+		var looks = []
+
+        
+		var ground = Bodies.rectangle(0, h - navbar, w * 2, 1, { isStatic: true, render: {
+         fillStyle: 'rgba(0,0,0,0)',
+         strokeStyle: 'rgba(0,0,0,0)',
+         lineWidth: 3
+    } });
+		var leftWall =  Bodies.rectangle(-10, 0, 1, h * 2, { isStatic: true, render: {fillStyle:'rgba(0,0,0,0)', strokeStyle: 'rgba(0,0,0,0)'} });
+		var rightWall = Bodies.rectangle(w - 10, 0, 1, h * 2, { isStatic: true, render: {fillStyle:'rgba(0,0,0,0)', strokeStyle: 'rgba(0,0,0,0)'} }); /*i'm still not sure why the w/h is rendering smaller than it is in matter, anyway I doubled the values to be on the safe side for the boundary walls*/
+		looks.push(ground)
+		looks.push(leftWall)
+		looks.push(rightWall)
+		World.add(engine.world, looks);
+		Engine.run(engine);
+		Render.run(render);
+
+		var updateGravity = function(event) {
+			if(drop == true){
+				var orientation = typeof window.orientation !== 'undefined' ? window.orientation : 0,
+	            gravity = engine.world.gravity;
+
+	        if (orientation === 0) {
+	            gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+	            gravity.y = Common.clamp(event.beta, -90, 90) / 90;
+	        } else if (orientation === 180) {
+	            gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+	            gravity.y = Common.clamp(-event.beta, -90, 90) / 90;
+	        } else if (orientation === 90) {
+	            gravity.x = Common.clamp(event.beta, -90, 90) / 90;
+	            gravity.y = Common.clamp(-event.gamma, -90, 90) / 90;
+	        } else if (orientation === -90) {
+	            gravity.x = Common.clamp(-event.beta, -90, 90) / 90;
+	            gravity.y = Common.clamp(event.gamma, -90, 90) / 90;
+	        }
+			}
+	        
+	    };
+
+
+	     window.addEventListener('deviceorientation', updateGravity);
+		/*add more looks every 3 seconds*/
+		var myInterval;
+		if(w <= 768){
+		    drawingWidth = drawingWidth 
+		    drawingHeight = drawingHeight 
+		}
+		if(true){
+		clearInterval(myInterval)
+		myInterval = setInterval(function(){ 
+			var boxA = Bodies.rectangle(getRandomInt(0, w), -90, drawingWidth, drawingHeight, {
+                render: {
+                	density: 0.005,
+	                frictionAir: friction,
+	                restitution: 0.3,
+	                friction: friction2,
+                    sprite: {
+                        texture: createImage('Look')
+                    }
+                }
+             });
+			World.add(engine.world, [boxA]);
+		}, 1000);
+		setTimeout(function(){
+			clearInterval(myInterval)
+		}, 50000)
+
+
+		} else{
+			var boxes = []
+			for (var i = 5 - 1; i >= 0; i--) {
+				
+				var boxA = Bodies.rectangle(getRandomInt(0, w), 100, drawingWidth, drawingHeight, {
+	                render: {
+	                	density: 0.005,
+		                frictionAir: friction,
+		                restitution: 0.3,
+		                friction: friction2,
+	                    sprite: {
+	                        texture: createImage('Look')
+	                    }
+	                }
+	             });
+				boxes.push(boxA)
+			}
+			World.add(engine.world, boxes);
+		}
+		engine.world.bounds.max.x = w;
+		engine.world.bounds.max.y = h;
+		jQuery('#splash-wrapper canvas').css('top', navbar + 'px');
+
+			window.addEventListener('resize', function(){
+				if(drop){
+					clearInterval(myInterval)
+					first = false;
+					w = jQuery(this).outerWidth()
+					h = jQuery(this).outerHeight() - textHeight
+				   	World.clear(engine.world);
+	    			Engine.clear(engine);
+	    			jQuery("#splash-wrapper canvas").remove()
+
+	    			clearInterval(myInterval)
+	    			dropLook()	
+				}
+				
+
+			}, false);	
+		/* resize browser handler */
+
+		
+   }
+
+
+
+
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* ~~~~~~~~ 2: random appearing ~~~~~~~~~ */
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ 
+    function makeDiv() {
+        var numRand = Math.floor(Math.random() * 501);
+        var divsize = 150;
+        var posx = (Math.random() * (jQuery('#splash-wrapper').width() - divsize)).toFixed();
+        var posy = (Math.random() * (jQuery(window).height() - divsize - textHeight)).toFixed();
+        var $newdiv = jQuery("<div class='exploding'> <p class='look _100'><a class='_100' style='text-decoration:none;' href='mailto:suzy@lookstudios.com'>Look</a></p> </div>").css({
+            'left': posx + 'px',
+                'top': posy + 'px',
+                'position': 'absolute'
+        });
+        $newdiv.appendTo('#splash-wrapper').delay(2000).fadeIn(100, function () {
+            // jQuery(this).remove();
+            makeDiv();
+        });
+      
+    }
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* ~~~~~~~~ 3: Old School Screensaver ~~~~~~~~~ */
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	function screensaver(){
+
+
+	function marqueeify(el, settings){
+		console.log('ey')
+		var containerWidth, containerHeight, elWidth, elHeight, move, getSizes
+		var $el = jQuery(el);
+		getSizes = function () {
+						containerWidth = w;
+						containerHeight = h - textHeight - navbar;
+						elWidth = $el.outerWidth();
+						horizontal = true;
+						vertical = true;
+						elHeight = $el.outerHeight();
+					};
+
+		move = {
+						right: function () {
+							$el.animate({left: (containerWidth - elWidth)}, {duration: ((containerWidth/settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+								settings.bumpEdge();
+								move.left();
+							}});
+						},
+						left: function () {
+							$el.animate({left: 0}, {duration: ((containerWidth/settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+								settings.bumpEdge();
+								move.right();
+							}});
+						},
+						down: function () {
+							$el.animate({top: (containerHeight - elHeight)}, {duration: ((containerHeight/settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+								settings.bumpEdge();
+								move.up();
+							}});
+						},
+						up: function () {
+							$el.animate({top: navbar}, {duration: ((containerHeight/settings.speed) * 1000), queue: false, easing: "linear", complete: function () {
+								settings.bumpEdge();
+								move.down();
+							}});
+						}
+					};
+
+					getSizes();
+				 
+					if (horizontal) {
+						move.right();
+					}
+					if (vertical) {
+						move.down();
+					}
+
+
+	}
+	
+
+        var $newdiv = jQuery("<p class='look _100'><a style='text-decoration:none;' class='_100' href='mailto:suzy@lookstudios.com'>Look</a></p>").css({
+            'left': '0',
+                'top': navbar,
+                'position':'absolute',
+                'display': 'block'
+        });
+
+
+        $newdiv.appendTo('#splash-wrapper').delay(0).fadeIn(0, function () {
+            // jQuery(this).remove();
+           marqueeify($newdiv, {
+				speed: 100,
+				bumpEdge: function () {
+					var newColor = "hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%)";
+					jQuery($newdiv).find('a').css('color', newColor);
+				}
+			});
+        });
+         window.addEventListener('resize', function(){
+         	jQuery('#splash-wrapper').find('.exploding').remove();
+			 jQuery('#splash-wrapper').find('canvas').remove();
+			 jQuery('#splash-wrapper').find('p.look').remove();
+							w = jQuery(this).outerWidth()
+							h = jQuery(this).outerHeight()
+
+							jQuery($newdiv).remove()
+							textHeight = jQuery('#is-studio').height()
+							screensaver()
+					}, false);	
+		
+	}
+    
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* ~~~~~~~~ 4: scrolling ~~~~~~~~~ */
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+var gridInterval;
+	function scrolling(){
+		var meow;
+		var left = false;
+		function scroll(el){
+			var $el = jQuery(el);
+			var elWidth = $el.outerWidth() + 20
+			var elHeight = $el.outerHeight()
+			var boundaryX = w - elWidth - 40
+			var boundaryY = h - elHeight - 40 
+	
+			  window.addEventListener('resize', function(){
+			  	jQuery('#splash-wrapper').find('.exploding').remove();
+			 jQuery('#splash-wrapper').find('canvas').remove();
+	
+								w = jQuery(this).outerWidth()
+								h = jQuery(this).outerHeight()
+								boundaryX = w - elWidth - 40
+								boundaryY = h - elHeight - navbar - 40
+				
+						}, false);	
+				if($el.position().top >= boundaryY){
+			
+						left = false
+						$el.css({
+							'top':navbar + 'px',
+							'left':'0'
+						})
+
+				}
+				else if ($el.position().left >= boundaryX){
+				   if(!left) {
+						$el.css({
+							'top': ($el.position().top + elHeight) + 'px'})
+						left = true
+					} else{
+						$el.css({'left':
+					       ($el.position().left - 100) + 'px' })
+					}
+				} else if($el.position().left <= 0 && left){
+					left = false
+					$el.css({
+							'top': ($el.position().top + elHeight) + 'px'})
+
+				}
+					else if(!left){
+					$el.css({'left':
+					       ($el.position().left + 100) + 'px' })
+				} else if(left){
+					$el.css({'left':
+					       ($el.position().left - 100) + 'px' })
+				}
+
+
+		}
+		var $newdiv = jQuery("<p class='look _100'><a class='_100' style='text-decoration:none;' href='mailto:suzy@lookstudios.com'>Look</a></p>").css({
+            	'left': '0',
+                'top': navbar + 'px',
+                'position':'absolute',
+                'display': 'block'
+        });
+
+        $newdiv.appendTo('#splash-wrapper').delay(0).fadeIn(0, function () {
+           meow = setInterval(function(){
+           	scroll($newdiv)
+           }, 200)
+        });
+	}
+
+
+    /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* ~~~~~~~~ 5: Griddle ~~~~~~~~~ */
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+	function griddle(){
+		var $newdiv = jQuery("<p class='look _100'><a style='text-decoration:none;' class='_100' href='mailto:suzy@lookstudios.com'>Look</a></p>").css({
+            	'left': '0',
+                'top': '0',
+                'position':'absolute',
+                'display': 'none',
+
+        });
+        var $grid = jQuery("<div class='griddle'></div>").css({
+            	'left': '0',
+                'top': navbar + 'px',
+                'width': '100%',
+                'text-align': 'center',
+                'position':'absolute',
+
+        });
+        $newdiv.appendTo('#splash-wrapper')
+        var divWidth = $newdiv.outerWidth();
+        var divHeight = $newdiv.outerHeight();
+        var numberOfRows = Math.floor(w/(divWidth + 20));
+        if(w <= 768){
+        	var numberOfColumns = Math.floor(((jQuery('#splash-wrapper').innerHeight() - 100))/30);
+        } else{
+        	var numberOfColumns = Math.floor(((h - navbar) - textHeight)/divHeight);
+        }
+         console.log(numberOfRows)
+        for (var i = numberOfRows - 1; i >= 0; i--) {
+        	var $newRow = jQuery("<div class='look-row'></div>").css({'text-align':'center',
+        															  'font-size':'0',
+        															  'margin': '0',
+        															  'width': 'calc(' + 100/numberOfRows +'% - 20px)',
+        															  'position':'relative',
+        															  'padding': '0 10px',
+                													  'display': 'inline-block'
+
+        															})
+        	if(i % 2 == 0){
+        		$newRow.addClass('opposite')
+        	}
+        	for (var x = numberOfColumns- 1; x >= 0; x--) {
+        		var $newdiv = jQuery("<p class='look _100' style='text-align:center;'><a style='text-decoration:none;' class='_100' href='mailto:suzy@lookstudios.com'>Look</a></p>");
+
+        		$newdiv.appendTo($newRow);
+        	}
+        	$newRow.appendTo($grid);
+
+            
+        	console.log('hi')
+        }
+        $grid.appendTo('#splash-wrapper')
+        clearInterval(gridInterval)
+        gridInterval = setInterval(function(){
+        	var rows = jQuery('.look-row');
+        	for (var i = rows.length - 1; i >= 0; i--) {
+        		var $row = jQuery(rows[i]);
+        		if($row.hasClass('opposite')){
+        			$row.removeClass('opposite')
+        		}else{
+        			$row.addClass('opposite')
+        		}
+        	}
+        }, 1000)
+
+        window.addEventListener('resize', function(){
+        	jQuery('#splash-wrapper').find('.exploding').remove();
+			 jQuery('#splash-wrapper').find('canvas').remove();
+			 jQuery('#splash-wrapper').find('p.look').remove();
+        	w = jQuery(this).outerWidth()
+			h = jQuery(this).outerHeight()
+
+        	jQuery('.griddle').remove()
+        	griddle()
+
+        },false)
+
+	}
+	var isSplash = jQuery('#splash-wrapper')
+
+	if(isSplash.length){
+		isSplash.find('.exploding').remove();
+		isSplash.find('canvas').remove();
+		isSplash.find('p.look').remove();
+	    /* set random splash page */
+		var dealersChoice = getRandomInt(0, 4)
+	//	dropLook()
+		switch(dealersChoice) {
+		  case 0:
+		    makeDiv()
+		    console.log('random')
+		    break;
+		  case 1:
+		    dropLook()
+		    console.log('droplook')
+		    break;
+	       case 2:
+	         screensaver()
+	         console.log('screensaver')
+		    break;
+		  case 3:
+		    scrolling()
+		    console.log('scrolling')
+		    break;
+		  case 4:
+		    griddle()
+		    console.log('griddle')
+		    break;
+		  default:
+		}	
+	}
+    /*set bg*/
+    
+  //   window.addEventListener("deviceorientation", function(){
+  //   	if(window.innerHeight < window.innerWidth){
+		//     isSplash.find('.exploding').remove();
+		// 	isSplash.find('canvas').remove();
+		// 	isSplash.find('p.look').remove();
+		// }    	
+  //   }, true);
+
+});
+
+
+</script>

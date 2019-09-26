@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='/styles/flickity.css')
+    link(rel='stylesheet', href='/styles/flickity-fade.css')
+    meta( name='viewport', content='width=device-width, initial-scale=1' )
+    link(rel='stylesheet', href='/styles/main.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='/scripts/fittext.js')
+    script(src='/scripts/flickity.pkgd.min.js')
+    script(src='/scripts/flickity-fade.js')
+    script(src='/scripts/lazyload.js')
+    script(src='/scripts/main.js')
+    title= "for good measure"
+  body(class='work')
+    include includes/navigation.pug
+    div(class=['info-header'] id='bigtext') WORK
+    div(class='page-wrapper')
+      div(class=['info-featured', 'secondary-navigation'])
+        a(href='/#featured-projects') Featured Projects 
+          span →
+      if featureds.length
+        div(class='featured-carousel')
+          each project, i in featureds
+            - var design = 'project-module-' + project.design;
+            - var image = project.image.url;
+            - var link = project.link;
+            - var linkcolor = project.linkcolor || "#ff9933"
+            - linkcolor = "color: " + linkcolor + ";";
+            - var linkText = project.title;
+            - if(project.tags){var tags = project.tags.split(',')}else{var tags = []};
+            - var description = project.description;
+            - var bgcolor = "background-color:"+ project.bgcolor + ";";
+            - var overlaycolor = "background-color:rgba("+ project.bgcolor + ",0.8);";
+            - if(project.lightText){var textColor = 'text-light'}else{var textColor = 'text-dark'};
+            div(class='carousel-slide')
+              a(href=link)
+                img(class='carousel-image' src=image)
+              div(class=['carousel-text'])!= project.title
+                p(class='carousel-link')
+                  a(href=link) ↳ View Project
+                div(class='carousel-tags')
+                  each tag, i in tags
+                    div(class='tag')!= tag
+                      span /
+                div(class='button-group')
+                  each project, i in featureds
+                    if i == 0
+                      div(class=['button','selected'])
+                    else 
+                      div(class='button')
+      div(class=['info-featured', 'archived-projects', 'tertiary-navigation'])
+          a(href='/#featured-projects') Archived Projects →
+      div(class=['archived-projects-wrapper'])  
+         if archiveds.length
+            each project, i in archiveds
+              - var image = project.image.url;
+              - var link = project.link;
+              
+              div(class='archive-grid-single')
+                img(class='archive-grid-image' src=image)
+                div(class='archive-info')
+                  div(class='archive-title')!= project.title
+                  div(class='archive-description')!= project.description
+                  div(class='view-project')
+                    a(class='archive-link' href=link) ↳ View Project
+  include includes/footer.pug
+   
+
+

@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='/styles/main.css')
+    meta( name='viewport', content='width=device-width, initial-scale=1' )
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='/scripts/fittext.js')
+    script(src='/scripts/lazyload.js')
+    script(src='/scripts/main.js')
+    title= "vault"
+  body(class=['vault-body'])
+    include includes/navigation.pug
+    div(class=['info-header'] id='bigtext') VAULT
+      span(class='vault-sticker') Tests & Rejects
+    - function shuffle(a) {
+    -    for (let i = a.length - 1; i > 0; i--) {
+    -      const j = Math.floor(Math.random() * (i + 1));
+    -      [a[i], a[j]] = [a[j], a[i]];
+    -    }
+    -    return a;
+    -  }
+    - shuffle(items)
+    div(class=['vault-container'])
+      if items.length
+        each item, i in items
+         - var randomWidth = Math.floor(Math.random() * (45 - 20 + 1)) + 20;
+         - randomWidth = randomWidth + 'vw';
+
+         - var myStyle = 'width:' + randomWidth + ';'
+          
+          div(class=['vault-item'], style=myStyle)
+            if item.video.length
+              video(class=["vault-video"], autoplay, mute)
+                source(src=item.video.url, type="video/mp4")
+                source(src=item.video.url, type="video/ogg")
+                |Your browser does not support the video tag.
+            else if item.image.url
+              img(class=['vault-image'], src=item.image.url)
+            else if item.text.length
+              div(class=['vault-text'])!= item.text
+
+    include includes/footer.pug

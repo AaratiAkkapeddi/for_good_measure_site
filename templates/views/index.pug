@@ -1,0 +1,152 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='/styles/main.css')
+    meta( name='viewport', content='width=device-width, initial-scale=1' )
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='/scripts/lazyload.js')
+    script(src='/scripts/main.js')
+    title= "for good measure"
+  body(class=['home'])
+  if configuration
+    - var video = configuration[0].index_hero_video
+    - var bgimage = configuration[0].index_hero_img_mobile.url || ''
+    video(class=["hero-video"], autoplay, loop, muted)
+      source(src=video.url, type="video/mp4")
+      source(src=video.url, type="video/ogg")
+      |Your browser does not support the video tag.
+    image(class=['mobile-banner'], src=bgimage)
+  
+  div(class='page-wrapper')
+    include includes/navigation.pug
+    div(class='intro-studio')
+      div(class='intro-text')
+        p!= configuration[0].home_page_info_text
+        div(class='just-link')
+          a(href='/info', class=['just-link-link']) ↳ Learn More
+      div(class='info-menu-outline')
+        a(href='/work', class=['outline-link']) WORK
+        a(href='/info', class=['outline-link']) INFO
+        a(href='/vault', class=['outline-link']) VAULT
+    div(class=['marquee']) 
+      p
+        span!= configuration[0].home_page_marquee 
+        span!= configuration[0].home_page_marquee 
+        span!= configuration[0].home_page_marquee 
+    span(id='featured-projects')
+    if projects.length
+      each project, i in projects
+        - var design = 'project-module-' + project.design;
+        - var image = project.image.url;
+        - var link = project.link;
+        - var linkcolor = project.linkcolor || "#ff9933"
+        - linkcolor = "color: " + linkcolor + ";";
+        - var linkText = project.title;
+        - if(project.swapFont){var swapText = 'swap-text'}else{var swapText = 'no-swap'};
+        - var description = project.description;
+        - var bgcolor = "background-color:"+ project.bgcolor + ";";
+        - var overlaycolor = "background-color:rgba("+ project.bgcolor + ",0.8);";
+        - if(project.lightText){var textColor = 'text-light'}else{var textColor = 'text-dark'};
+       
+        if project.design == 4
+          - bgcolor2 = bgcolor
+          div(style=bgcolor2 , class=['project-module', swapText, design])
+            div(class='project-module-4-images')
+              a(href=link)
+                img(class='project-module-4-image' src=image)
+                img(class='project-module-4-image' src=image)
+                img(class='project-module-4-image' src=image)
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              if linkText > 0
+                a(href=link, class=['title-link', textColor])!= linkText 
+                  span(class=['title-arrow'], style=linkcolor) →
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project
+        else if project.design == 5 || project.design == 6
+          div(style=bgcolor , class=['project-module', swapText, design])
+            div(class=['image-container'])
+              a(href=link)
+                img(src=image)
+            a(href=link, class=['title-link', textColor])!= linkText
+              span(class=['title-arrow'], style=linkcolor) →
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project
+        else if project.design == 7
+          div(style=bgcolor , class=['album-module', swapText, design])
+            div(class=['album-text-container', textColor])
+              span(class='album-intro') 
+                  img(class='logo', src='/images/4gm_logo.svg')
+                  span → Album of the Month
+              div(class='album-links')
+                a(href=project.spotify_link, style=linkcolor, class=['just-link-link', 'album-link']) ↳ Listen on Spotify
+                a(href=project.apple_music, style=linkcolor, class=['just-link-link', 'album-link']) ↳ Listen on Apple Music
+              div(class='album-info')
+                h1!= project.album_title
+                h1(class='artist')!= project.artist_name
+              
+            div(class=['album-image-container', textColor])
+              img(class='record' src=project.album_image.url)
+              div(style=bgcolor class='album-circle')
+        else if project.design == '1-reversed'
+          div(style=bgcolor , class=['project-module', swapText, design])
+            div(class=['image-container'])
+              a(href=link)
+                img(src=image)
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              a(href=link, class=['title-link', textColor])!= linkText
+                span(class=['title-arrow'], style=linkcolor) →
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project 
+        else if project.design == '3-reversed'
+          div(style=bgcolor , class=['project-module', swapText,  design])
+            div(class=['image-container'])
+              a(href=link)
+                img(src=image)
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              a(href=link, class=['title-link', textColor])!= linkText
+                span(class=['title-arrow'], style=linkcolor) →
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project  
+        else if project.design == 'video'
+          div(style=bgcolor , class=['project-module', swapText, design])
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              a(href=link, class=['title-link', textColor])!= linkText
+                span(class=['title-arrow'], style=linkcolor) →
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project 
+            video(class=["module-video"], autoplay, loop, muted)
+              source(src=project.video.url, type="video/mp4")
+              source(src=project.video.url, type="video/ogg")
+              |Your browser does not support the video tag.
+            image(class=['mobile-module-video'], src=image)
+        else
+          div(style=bgcolor , class=['project-module', swapText,  design])
+            div(style=overlaycolor, class=['project-module-text-container', textColor])
+              a(href=link, class=['title-link', textColor])!= linkText
+                span(class=['title-arrow'], style=linkcolor) →
+              div(class=['description'])
+                p!= description
+              div(class='just-link')
+                a(href=link, style=linkcolor, class=['just-link-link']) ↳ View Project 
+            div(class=['image-container'])
+              a(href=link)
+                img(src=image)
+              if project.design == 2
+                div(class=['image-caption', textColor])
+                  div(class['inner'])!= project.caption
+    div(class=['info-overview', 'view-all-work', 'tertiary-navigation'])
+      a(href='/work') ↳ View All Work
+      
+  include includes/footer.pug
+

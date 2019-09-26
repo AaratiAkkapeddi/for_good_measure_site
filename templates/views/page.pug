@@ -1,0 +1,147 @@
+
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='/styles/main.css')
+    meta( name='viewport', content='width=device-width, initial-scale=1' )
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='/scripts/lazyload.js')
+    script(src='/scripts/main.js')
+    title= "for good measure"
+  body(class='project-page')
+    include includes/navigation.pug
+    -if(page.project_tags){var tags = page.project_tags.split(',')}else{var tags = []};
+    - var linkcolor = page.banner_arrow_color || "#ff9933"
+    - linkcolor = "color: " + banner_arrow_color + ";";
+    - var bgcolor = page.banner_bg_color || "#fff"
+    - if(page.lighttext){var textColor = 'text-light'}else{var textColor = 'text-dark'};
+    - var style = linkcolor + "background-color: " + bgcolor + ';'
+    -if(page.banner_img){var banner_img = page.banner_img.url}else{var banner_img = ''};
+    -var design = 'banner-' + page.banner_design
+    - var project_overview = page.project_overview
+    - var project_credits = page.project_credits
+    - var next_project_title = page.next_project_title
+    - var next_project_link = page.next_project_link
+    - var next_project_description = page.next_project_description
+    - var next_project_image = page.next_project_image
+    - if(next_project_image){ next_project_image = next_project_image.url}
+    if page.banner_design == '1'
+      div(class=['project-banner', design, textColor] style=style)
+        div(class='project-tags')
+                    each tag, i in tags
+                      div(class='tag')!= tag
+                        span /
+        div(class='project-banner-text')
+          div(class='project-title')!= page.title 
+            span →
+          div(class='project-descrip')!= page.description
+        div(class='project-banner-image' style='background-image:url("' + banner_img +'");')
+    else if page.banner_design == '2'
+      div(class=['project-banner', design] style=style + 'background-image:url("' + banner_img +'");')
+        div(class='project-banner-text')
+          div(class='project-descrip')!= page.description
+          div(class='project-tags')
+                    each tag, i in tags
+                      div(class='tag')!= tag
+                        span /
+    else if page.banner_design == '3'
+      div(class=['project-banner', design] style=style + 'background-image:url("' + banner_img +'");')
+        div(class='project-tags')
+                    each tag, i in tags
+                      div(class='tag')!= tag
+                        span /
+        div(class='project-banner-text')
+          div(class='project-title')!= page.title 
+            span →
+          div(class='project-descrip')!= page.description
+    else if page.banner_design == '4'
+      div(class=['project-banner', design] style=style)
+        div(class='project-tags')
+                    each tag, i in tags
+                      div(class='tag')!= tag
+                        span /
+        div(class='project-banner-image' style='background-image:url("' + banner_img +'");')
+        div(class='project-banner-text')
+          div(class='project-title')!= page.title 
+            span →
+          div(class='project-descrip')!= page.description
+    div(class='page-wrapper')
+      div(class=['info-featured', 'archived-projects', 'tertiary-navigation'] id='project-info-trigger') 
+        span Project Info →
+        div(class=['project-info-box'])
+          div(class='project-info-overview')
+            h4(class='project-info-overview-title') Overview
+            div!= project_overview
+          div(class='project-info-credits')
+            h4(class='project-info-credits-title') Credits
+            div!= project_credits
+      if modules.length
+        each module, i in modules
+          -var text = module.text
+          -if(module.image){var image = module.image.url}else{var image = ''};
+          -if(module.secondImage){var second_image = module.secondImage.url}else{var second_image = ''};
+          -var caption = module.caption
+          - var bgcolor = module.bgcolor || "#fff"
+          - if(module.lighttext){var textColor = 'text-light'}else{var textColor = 'text-dark'};
+          - if(module.swapFont){var swapText = 'swap-text'}else{var swapColor = 'no-swap'};
+          - var style =  "background-color: " + bgcolor + ';'
+          -var design = 'page-module-' + module.design
+          if module.design == '1'
+            div(class=[design, swapText, textColor] style=style)
+              div(class='module-text')!= text
+              img(class='module-image' src=image)
+          if module.design == '1-reversed'
+            div(class=[design, swapText, textColor] style=style)
+              img(class='module-image' src=image)
+              div(class='module-text')!= text
+          else if module.design == '2'
+            div(class=[design, swapText, textColor])
+              img(src=image)
+              if text.length > 0
+                div(class='module-text')!= text
+              if caption.length > 0
+                div(class='module-caption' style=style)!= caption
+          else if module.design == 'double'
+            div(class=[design, swapText, textColor] style=style)
+              img(src=image)
+              img(src=second_image)
+              div(class='module-text')!= text
+              div(class='module-caption' style=style)!= caption
+          else if module.design == '3'
+            div(class=[design, swapText, textColor])
+              img(src=image)
+              div(class='module-text')!= text
+              if caption.length > 0
+                div(class='module-caption' style=style)!= caption
+          else if module.design == '4'
+            div(class=[design, swapText, textColor] style=style)
+              div(class='module-text')!= text
+              img(class='module-image' src=image)
+          else if module.design == '4-reversed'
+            div(class=[design, swapText, textColor] style=style)
+              img(class='module-image' src=image)
+              div(class='module-text')!= text
+          else if module.design == 'video'
+            div(class=['page-module-video'])
+              div(class=['project-module-text-container'])
+                div(class=['description'])
+                  p!= text
+              video(class=["module-video"], autoplay, loop, muted)
+                source(src=module.video.url, type="video/mp4")
+                source(src=module.video.url, type="video/ogg")
+                |Your browser does not support the video tag.
+              image(class=['mobile-module-video'], src=image)
+          else if module.design == '5'
+            div(class=[design, swapText, textColor] style=style)
+              div(class='module-text')!= text
+              img(class='module-image' src=image)
+      if next_project_title
+        div(class='next-project-banner') Next Project →
+        div(class='next-project')
+          div(class='next-project-text')
+            span(class='next-project-title')!= next_project_title + ' →'
+            span(class='next-project-description')!= next_project_description
+            a(class='next-project-link' href=next_project_link) ↳ View Project
+          a(class='next-project-image-wrapper' href=next_project_link)
+            img(class='next-project-image' src=next_project_image)
+      include includes/footer.pug

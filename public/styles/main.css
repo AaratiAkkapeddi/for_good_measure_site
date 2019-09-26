@@ -1,0 +1,2298 @@
+/****** FONTS *****/
+@font-face {
+	font-family: "GZA Seminegra";
+	src: url("../fonts/gza-seminegra-webfont.ttf");
+	src: 
+	url("../fonts/gza-seminegra.otf") format("opentype"),
+	url("../fonts/gza-seminegra.ttf") format("truetype"),
+	url("../fonts/gza.woff") format("woff");
+}
+
+
+@font-face {
+	font-family: "Styrene";
+	src: url("../fonts/Styrene-A-Regular.ttf");
+	src: 
+	url("../fonts/Styrene-A-Regular.otf") format("opentype"),
+	url("../fonts/Styrene-A-Regular.ttf") format("truetype"),
+	url("../fonts/Styrene-A-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Styrene Medium";
+	src: url("../fonts/Styrene-A-Medium.ttf");
+	src: 
+	url("../fonts/Styrene-A-Medium.otf") format("opentype"),
+	url("../fonts/Styrene-A-Medium.ttf") format("truetype"),
+	url("../fonts/Styrene-A-Medium.woff2") format("woff2");
+}
+/*HOVER STATES*/
+.info-section-6 .job-left a, .view-all-work a, p a{
+	display: inline-block;
+}
+
+p a:hover, .just-link-link:hover,.view-all-work a, .mailto:hover,.info-section-6 .job-left a:hover, .title-arrow:hover,.archive-link:hover, #project-info-trigger > span:hover, .next-project-link:hover, .carousel-link a:hover{
+  -webkit-animation: jiggle 0.2s; /* Safari 4+ */
+  -moz-animation:    jiggle 0.2s; /* Fx 5+ */
+  -o-animation:      jiggle 0.2s; /* Opera 12+ */
+  animation:         jiggle 0.2s; /* IE 10+, Fx 29+ */
+}
+.title-arrow{
+	display: inline-block;
+}
+a.just-link-link{
+	display: inline-block;
+}
+@-webkit-keyframes jiggle {
+  0%   { -webkit-transform: translateY(0); }
+  25% { -webkit-transform: translateY(-2px);}
+  75% { -webkit-transform: translateY(2px);}
+  100% { -webkit-transform: translateY(0px);}
+}
+@-moz-keyframes jiggle {
+  0%   { -moz-transform: translateY(0); }
+  25% { -moz-transform: translateY(-2px);}
+  75% { -moz-transform: translateY(2px);}
+  100% { -moz-transform: translateY(0px);}
+}
+@-o-keyframes jiggle {
+  0%   { -o-transform: translateY(0); }
+  25% { -o-transform: translateY(-2px);}
+  75% { -o-transform: translateY(2px);}
+  100% { -o-transform: translateY(0px);}
+}
+@keyframes jiggle {
+  0%   { transform: translateY(0); }
+  25% { transform: translateY(-2px);}
+  75% { transform: translateY(2px);}
+  100% { transform: translateY(0px);}
+}
+/*a:hover *{
+	opacity: 0.8;
+}
+a:hover img{
+	opacity: 1;
+}*/
+p {
+	margin-top:0;
+	margin-bottom:0;
+}
+.logo{
+	width: 65px;
+}
+.info-section-8 .logo{
+	filter: invert(100%);
+}
+html{
+	width: 100%;
+	overflow-x: hidden;
+}
+body{
+/*	background: deeppink;*/
+	margin:0;
+	font-size: 4rem;
+	font-family: "GZA Seminegra", serif;
+}
+/*NAVIGATION*/
+.navigation span, .navigation-mobile span{
+	display: inline-block;
+	margin: 10px;
+	vertical-align: middle;
+	font-size: 1rem; /* was 1.2 */
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.navigation-mobile.expanded{
+	background: white;
+}
+.navigation-mobile.expanded .burger-patty{
+	display: block;
+	padding: 25px;
+}
+.navigation div, .navigation-mobile div{
+	display: inline-block;
+	margin:0;
+}
+.home .navigation{
+	display: none;
+}
+.home .navigation.sticky{
+	display: block;
+}
+.navigation{
+	z-index: 99;
+	background: white;
+	display: block;
+	position: fixed;
+	top:0;
+	width:calc(100% - 30px);
+	font-size: 1rem; /* was 1.2 */
+	left:0;
+	padding: 0.63px 15px;
+}
+.navigation em{
+	font-style: normal;
+	margin-left: 5px;
+}
+.home .navigation{
+	position: relative;
+	padding: 0.63px 15px;
+
+}
+.home .navigation.sticky {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 30px);
+}
+.secondary-navigation.almost.sticky {
+  position: fixed;
+  top: 45px;
+  width: 100%;
+  z-index: 999;
+}
+.secondary-navigation.almost {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 999;
+}
+.tertiary-navigation.almost.sticky {
+  position: fixed;
+  top: 45px;
+  width: 100%;
+  z-index: 999;
+}
+.navigation.go-away{
+	display: none;
+}
+.tertiary-navigation.almost {
+  position: fixed;
+  top: 35px;
+  width: 100%;
+  z-index: 999;
+}
+.fourth-navigation.almost.sticky {
+  position: fixed;
+  top: 45px;
+  width: 100%;
+  z-index: 999;
+}
+.fourth-navigation.almost {
+  position: fixed;
+  top: 35px;
+  width: 100%;
+  z-index: 999;
+}
+.navigation .nav-right, .navigation-mobile .nav-right{
+	float:right;
+}
+.navigation-mobile{
+	display: none;
+}
+
+.navigation-mobile .burger{
+	width: 70px;
+	cursor: pointer;
+}
+.navigation-mobile .burger span{
+	background: black;
+	width: 50px;
+	height: 5px;
+	display: inline-block;
+	margin-top:8px;
+	float:right;
+}
+.navigation-mobile.expanded .burger span:first-child{
+	transform: rotate(45deg) translateY(17px);
+}
+.navigation-mobile.expanded .burger span:last-child{
+	transform: rotate(-45deg) translateY(-17px);
+}	
+.navigation-mobile .burger-patty{
+	display: none;
+}
+.navigation-mobile span{
+	font-size: 2rem;
+}
+@media(max-width:768px){
+	.navigation{
+		display: none;
+	}
+	.navigation-mobile{
+		display: block;
+	}
+}
+/* HERO VIDEO */
+.hero-video{
+	width:100%;
+	display: block;
+	position: fixed;
+	z-index: -1;
+	top:0;
+}
+.mobile-banner{
+	width:100%;
+	display: none;
+}
+@media(max-width:768px){
+	.hero-video{
+		display: none;
+	}
+	.mobile-banner{
+		display: block;
+	}
+}
+.project-module img{
+	max-width: 100%;
+}
+/*#ff9933 ff9933*/
+a{
+	color: inherit;
+	text-decoration: none;
+}
+  html {
+                -moz-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+/**************** INFO PAGE ***************/
+.info-header{
+	font-size:100%;
+	text-align:center;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-weight: bold;
+	position: fixed;
+	z-index: -1;
+	top:0;
+	left:0;
+	width: 100%;
+    -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+.work .info-header{
+	background: #0055ff;
+}
+.work .archived-projects{
+	background:#0055ff;
+	color:white;
+}
+.work .archived-projects-wrapper{
+	font-size: 0;
+	background: white;
+}
+.work .archive-grid-single{
+	width: 33.3333%;
+	font-size: 0rem;
+	cursor: pointer;
+	overflow: hidden;
+	vertical-align: top;
+	position: relative;
+	display: inline-block;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.work .archive-grid-image{
+	width: 100%;
+	position: relative;
+}
+.project-banner.text-light .project-banner-text{
+	color: white;
+}
+.project-banner.text-light .project-tags{
+	color: white;
+}
+.work .archive-grid-single .archive-info{
+	display: none;
+	position: absolute;
+	top:0;
+	padding: 5px;
+	background: white;
+	width: 100%;
+	height: auto;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 1rem;
+}
+
+.archive-title{
+	color: black;
+	font-weight: bold;
+}
+.archive-description{
+	color: gray;
+	font-size: 1rem;
+}
+.archive-description *{
+	margin:0;
+}
+.archive-link{
+	display: inline-block;
+	color: #0000ff;
+	font-size: 1rem; /* was 1.2 */
+}
+.work .archive-grid-single:hover .archive-info{
+	display: block; 
+}
+.work .featured-carousel{
+	font-size: 0;
+}
+.work .carousel-slide{
+	width: 100%;
+	font-size:0;
+	display: block;
+	vertical-align: top;
+	z-index: 1;
+	position: relative;
+}
+.carousel-slide a{
+	width: 50%;
+	display: inline-block;
+	overflow: hidden;
+}
+.carousel-slide.is-selected{
+	z-index: 2;
+	position: relative;
+}
+.work .carousel-image {
+	width: 100%;
+	display: inline-block;
+	height: auto;
+}
+.work .carousel-tags{
+/*	margin-top: 50vh;*/
+}
+.work .carousel-text{
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: calc(50% - 50px);
+	padding: 10px 25px;
+
+	display: inline-block;
+	font-size: 4rem;
+	color:white;
+	background: black;
+	vertical-align: top;
+}
+.tag{
+	display: inline;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 2rem;
+	margin:0;
+}
+.tag span{
+	color: #ff9933;
+	margin-left: 10px;
+}
+.button-group{
+	display: inline-block;
+}
+.button{
+	vertical-align: top;
+	cursor: pointer;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin: 0 5px;
+	border-radius: 100%;
+	background: white;
+}
+.button.selected{
+	background:#ff9933;
+}
+.flickity-page-dots{
+	bottom: 70%;
+	display: none;
+	width: calc(50% - 25px);
+	right: 0;
+	text-align: left;
+}
+.flickity-page-dots .dot{
+	background:white;
+	opacity: 1;
+	width: 15px;
+	height: 15px;
+}
+.carousel-link a{
+   color: #ff9933;
+   font-family: 'Styrene';
+   letter-spacing: -0.05rem;
+   font-size: 2rem;
+}
+.carousel-link{
+	margin:0;
+}
+.flickity-page-dots .dot.is-selected{
+	background: #ff9933;
+}
+.info-container{
+	position: relative;
+	z-index: 1;
+	background: white;
+	margin-top: 55vh;
+}
+.info-featured{
+	background: lightgrey;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 1rem; /* was 1.2 */
+	padding: 10px 25px;
+}
+.info-featured a {
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 1rem; /* was 1.2 */
+}
+.info-featured span{
+	color: #0055ff;
+}
+#project-info-trigger > span{
+	color: #fff;
+}
+.info-section-1{
+	padding: 10px 25px;
+	padding-left: 40%;
+	font-size: 4rem;
+	font-weight: bold;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-1 .mailto{
+	font-size: 1rem; /* was 1.2 */
+	color: #0055ff;
+	display: inherit;
+	margin:10px 0;
+}
+.info-section-2 img{
+	width:100%;
+}
+.info-section-2{
+	font-size:0;
+}
+.info-section-3{
+	padding: 10px 25px;
+	padding-right: 20%;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-4-left, .info-section-4-right{
+	display: inline-block;
+	width: 50%;
+	margin:0;
+	padding: 0;
+}
+.info-section-4-right{
+	background: black;
+	color: white;
+	font-size: 2rem;
+	vertical-align: top;
+	padding: 10px 25px;
+}
+.info-section-4-right{
+	width: calc(40% - 50px);
+}
+.info-section-4{
+	font-size:0;
+	background: black;
+
+}
+.info-section-4-left img{
+	width:100%;
+}
+.info-section-4 .capabilities{
+	font-size: 1rem; /* was 1.2 */
+	text-decoration: underline;
+	margin-bottom: 1.2rem;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-5 {
+	font-size:0;
+	display: block;
+}
+.info-section-5 .select-clients, .info-section-5 .teaching-lectures, .info-section-5 .awards-press{
+	display: table-cell;
+	font-size: 1rem; /* was 1.2 */
+	width: 33.333333vw;
+	vertical-align: top;
+	line-height: 2rem;
+	padding: 10px 25px;
+} 
+.info-section-5 .select-clients{
+	background: #0055ff;
+	color: white;
+}
+.info-section-5 .awards-press{
+	background: lightgray;
+}
+.info-section-5 a{
+	color:#0055ff;
+}
+.info-section-6{
+	font-size:0;
+}
+.info-section-6 .job-left, .info-section-6 .job-right{
+	width: calc(50% - 50px);
+	padding: 10px 25px;
+	vertical-align: top;
+	font-size: 0;
+	display: inline-block;
+}
+.info-section-6 p {
+    margin: 10px 0px;
+    font-size: 2rem;
+ }
+.info-section-6 .job-left strong{
+	font-size: 1rem; /* was 1.2 */
+	text-decoration: underline;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-6 .job-right strong{
+	font-size: 1rem; /* was 1.2 */
+	text-decoration: underline;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-6 .job-left{
+	background: lightgray
+}
+.info-section-6 .job-left a{
+	color: #0055ff;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 1rem; /* was 1.2 */
+}
+.info-section-6 .job-right a{
+	color:#0055ff;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.info-section-7 {
+	background: #0055ff;
+	color:white;
+	padding: 10px 25px;
+}
+.info-section-6 .job-left, .info-section-6 .job-right{
+	display: table-cell;
+	width: 50vw;
+}
+.info-section-7 h1{
+	font-weight: normal;
+	text-align: center;
+	margin:0;
+	padding:0;
+}
+.info-section-7 p{
+	font-size: 2rem;
+	text-align:center;
+	margin:0;
+	padding:0;
+}
+.info-section-8{
+	background: black;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	color: white;
+	font-size: 0;
+}
+.footer-slogan{
+	font-size: 2rem;
+	padding: 10px 25px;
+}
+.info-section-8 .col-4{
+	width: calc(25% - 50px);
+	padding: 10px 25px;
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+}
+.info-section-8 .col-4 strong{
+	font-weight: bold;
+}
+.info-section-8 .col-4 p{
+	margin:0;
+	padding:0;
+	font-weight: normal;
+}
+.info-other{
+	background: black;
+	display: block;
+    padding: 10px 25px;
+    text-align: left;
+    color: white;
+    font-size: 1rem; /* was 1.2 */
+    font-family: 'Styrene';
+    letter-spacing: -0.05rem;
+}
+.info-other span:last-child{
+	color: #ff9933;
+}
+.info-overview{
+	background: lightgray;
+	display: block;
+    padding: 10px 25px;
+    text-align: left;
+    color: black;
+    font-size: 1rem; /* was 1.2 */
+    font-family: 'Styrene';
+    letter-spacing: -0.05rem;
+}
+.info-overview span:last-child{
+	color: #0055ff;
+}
+@media(max-width:768px){
+	.info-header{
+		font-size:8rem;
+		text-align:center;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+		font-weight: bold;
+		position: relative;
+	}
+	.info-container{
+		margin-top:0;
+	}
+	.info-featured{
+		background: lightgrey;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+		font-size: 1rem; /* was 1.2 */
+		padding: 5px;
+	}
+	.info-featured a {
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+		font-size: 1rem; /* was 1.2 */
+	}
+	.info-featured span{
+		color: #0055ff;
+	}
+	.info-section-1{
+		padding: 10px 25px;
+		font-size: 2rem;
+		font-weight: bold;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-1 .mailto{
+		font-size: 1rem; /* was 1.2 */
+		color: #0055ff;
+	}
+	.info-section-2 img{
+		width:100%;
+	}
+	.info-section-3{
+		padding: 10px 25px;
+		font-size: 1rem; /* was 1.2 */
+		font-weight: bold;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-4-left, .info-section-4-right{
+		display: block;
+		width: 100%;
+		margin:0;
+		padding: 0;
+	}
+	.info-section-4-right{
+		background: black;
+		color: white;
+		font-size: 2rem;
+		vertical-align: top;
+		padding: 10px 25px;
+	}
+	.info-section-4-right{
+		width: calc(100% - 50px);
+	}
+	.info-section-4{
+		font-size:0;
+		background: black;
+
+	}
+	.info-section-4-left img{
+		width:100%;
+	}
+	.info-section-4 .capabilities{
+		font-size: 1rem; /* was 1.2 */
+		text-decoration: underline;
+		margin-bottom: 1.2rem;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-5 {
+		font-size:0;
+		display: block;
+	}
+	.info-section-5 h2{
+		margin: 10px 0;
+	}
+	.info-section-5 .select-clients, .info-section-5 .teaching-lectures, .info-section-5 .awards-press{
+		display: block;
+		/*font-size: 1rem; /* was 1.2 */*/
+		width: calc(100% - 50px);
+		vertical-align: top;
+		padding: 10px 25px;
+		min-height: auto;
+		font-size:0;
+	} 
+	.info-section-5 .select-clients *, .info-section-5 .teaching-lectures *, .info-section-5 .awards-press *{
+		font-size: 1rem;
+	}
+	.info-section-5 .select-clients{
+		background: #0055ff;
+		color: white;
+	}
+	.info-section-5 .awards-press{
+		background: lightgray;
+	}
+	.info-section-5 a{
+		color:#0055ff;
+	}
+	.info-section-6{
+		font-size:0;
+	}
+	.info-section-6 .job-left, .info-section-6 .job-right{
+		width:  calc(100% - 50px);
+		padding: 10px 25px;
+		vertical-align: top;
+		font-size: 1rem; /* was 1.2 */
+		display: block;
+	}
+	.info-section-6 .job-left strong{
+		font-size: 1rem; /* was 1.2 */
+		text-decoration: underline;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-6 .job-right strong{
+		font-size: 1rem; /* was 1.2 */
+		text-decoration: underline;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-6 .job-left{
+		background: lightgray
+	}
+	.info-section-6 .job-left a{
+		color: #0055ff;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+		font-size: 1rem; /* was 1.2 */
+	}
+	.info-section-6 .job-right a{
+		color:#0055ff;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+	}
+	.info-section-7 {
+		background: #0055ff;
+		color:white;
+		padding: 10px 25px;
+	}
+	
+	.info-section-6 .job-left, .info-section-6 .job-right{
+		height: auto;
+	}
+	.info-section-7 h1{
+		font-weight: normal;
+		text-align: center;
+		margin:0;
+		padding:0;
+		font-size: 2rem;
+	}
+	.info-section-7 p{
+		font-size: 1rem; /* was 1.2 */
+		text-align:center;
+		margin:0;
+		padding-top:2rem;
+	}
+	.info-section-8{
+		background: black;
+		font-family: 'Styrene';
+		letter-spacing: -0.05rem;
+		color: white;
+		font-size: 0;
+	}
+	.footer-slogan{
+		font-size: 2rem;
+		padding: 10px 25px;
+	}
+	.info-section-8 .col-4{
+		width: calc(100% - 50px);
+		padding: 10px 25px;
+		font-size: 1rem; /* was 1.2 */
+		display: block;
+	}
+	.info-section-8 .col-4 strong{
+		font-weight: bold;
+	}
+	.info-section-8 .col-4 p{
+		margin:0;
+		padding:0;
+		font-weight: normal;
+	}
+}
+/**************** Vault Items ***************/
+.work .info-header{
+	width: 100%;
+	font-size: 100%;
+	text-align:left;
+}
+.vault-sticker{
+	background: #0055ff;
+	color:white;
+	font-family:'Styrene';
+	letter-spacing: -0.05rem;
+	position: fixed;
+	padding: 10px 25px;
+	font-size: 2rem;
+	display: inline-block;
+}
+.vault-body{
+	background: black;
+	color:white;
+}
+.vault-body .info-header{
+	font-size: 100%;
+	opacity: 0.9;
+	width: 100%;
+	position: fixed;
+    top: 65px;
+}
+.vault-item{
+	display: inline-block;
+	font-size: 2rem;
+	position: relative;
+	float: left;
+}
+.vault-item img{
+	width: 100%;
+}
+.vault-body .navigation{
+	background: white;
+	color: black;
+}
+.vault-container{
+	padding: 25px;
+	position: relative;
+	min-height: 100vh;
+	overflow: hidden;
+	background: transparent;
+    margin-top: 65vh;
+}
+/**************** PROJECT MODULES ***************/
+.project-module-text-container.text-light{
+	color:white;
+}
+.carousel-slide .text-light{
+	color:white;
+}
+.featured-carousel{
+	background: black;
+}
+/* one */
+.project-module{
+	position: relative;
+	overflow: visible;
+	display: block;
+	font-size: 0;
+}
+
+.project-module-1{
+	height:auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.project-module-1 .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	width: 66.666%;
+	position: relative;
+	float:right;
+	right:0;
+}
+.project-module .image-container a{
+	display: block;
+}
+.project-module-1 .image-container img{
+	height:auto;
+	width: 100%;
+}
+.project-module-1 .project-module-text-container{
+	width:50%;
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+	height: auto;
+	margin:0;
+	z-index: 9;
+	position: absolute;
+	text-align: center;
+	padding:15px;
+}
+.project-module-1 .just-link{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.project-module-1 .just-link .just-link-link{
+	color: #ff9933;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	text-decoration: none;
+}
+.project-module-1 .project-module-text-container .title-link{
+	color:black;
+	text-decoration: none;
+	vertical-align: middle;
+	font-size: 2rem; /* was 1.2 */
+    font-family: 'Styrene';
+    letter-spacing: -0.05rem;
+
+}
+.project-module-1 .project-module-text-container .title-link.text-light{
+	color:white;
+}
+.project-module-1 .project-module-text-container .description{
+	max-width: 80%;
+	margin:0 auto;
+	display: block;
+	padding: 0;
+	font-size: 4rem;
+	font-family: 'GZA Seminegra';
+}
+.project-module-1 .project-module-text-container .description p{
+	margin:0;
+}
+
+.project-module-1-reversed{
+	height:auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.project-module-1-reversed .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	height:auto;
+	width: 66.6666%;
+	position: relative;
+	left:0;
+}
+.project-module-1-reversed .image-container img{
+	height:auto;
+	width: 100%;
+}
+.project-module-1-reversed .project-module-text-container{
+	width:50%;
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+	height: auto;
+	margin:0;
+	z-index: 9;
+	position: absolute;
+	float:right;
+	text-align: center;
+	padding:15px;
+	right:0;
+}
+.project-module-1-reversed .just-link{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.project-module-1-reversed .just-link .just-link-link{
+	color: #ff9933;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	text-decoration: none;
+}
+.project-module-1-reversed .project-module-text-container .title-link{
+	color:black;
+	text-decoration: none;
+	font-size: 2rem;
+    font-family: 'Styrene';
+    letter-spacing: -0.05rem;
+
+}
+.project-module-1-reversed .project-module-text-container .title-link.text-light{
+	color:white;
+}
+.project-module-1-reversed .project-module-text-container .description{
+	max-width: 80%;
+	margin:0 auto;
+	display: block;
+	font-size: 4rem;
+	font-family: 'GZA Seminegra';
+}
+.project-module-1-reversed.swap-text .project-module-text-container .description{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+@media(max-width: 768px){
+	.project-module-1, .project-module-1 .image-container img, .project-module-1 .image-container, .project-module-1 .image-container img, .project-module-1 .project-module-text-container{
+		position: relative;
+		width: 100%;
+		display: block;
+		height: auto;
+	}
+	.project-module-1 .just-link{
+		position: relative;
+		margin-top:4rem;
+		bottom:auto;
+	}
+}
+
+/* two */
+.project-module-2{
+	display: block;
+
+}
+/*VIDEO CAPTION*/
+.project-module-video .project-module-text-container{
+	display: block;
+	position: absolute;
+	padding: 10px 25px;
+	z-index:2;
+	font-size: 1rem; /* was 1.2 */
+}
+.project-module-video .project-module-text-container .description, .project-module-video .project-module-text-container .description *{
+	text-align: left;
+	display: inline;
+}
+
+
+.project-module-video, .project-module-text-container .description{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 2rem;
+}
+.project-module-video .project-module-text-container .title-link{
+	display: inline;
+	font-family: "GZA Seminegra";
+	font-size: 2rem;
+}
+
+
+
+.page-module-video .project-module-text-container{
+	display: block;
+	position: absolute;
+	padding: 10px 25px;
+	z-index:2;
+	font-size: 1rem; /* was 1.2 */
+}
+.page-module-video .project-module-text-container .description, .page-module-video .project-module-text-container .description *{
+	text-align: left;
+	display: inline;
+}
+
+
+.page-module-video, .project-module-text-container .description{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 2rem;
+}
+.page-module-video .project-module-text-container .title-link{
+	display: inline;
+	font-family: "GZA Seminegra";
+	font-size: 2rem;
+}
+/*******/
+.project-module-2 .project-module-text-container{
+	display: block;
+	position: relative;
+	width:calc(100% - 50px);
+	padding: 10px 25px;
+	z-index:2;
+	font-size: 1rem; /* was 1.2 */
+}
+.project-module-2 .project-module-text-container .description, .project-module-2 .project-module-text-container .description *{
+	text-align: left;
+	display: inline;
+}
+
+
+.project-module-2, .project-module-text-container .description{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 2rem;
+}
+.project-module-2 .project-module-text-container .title-link{
+	display: inline;
+	font-family: "GZA Seminegra";
+	font-size: 2rem;
+}
+.project-module-2 .image-caption{
+	position: absolute;
+	z-index: 9;
+	left:0;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+/*	opacity: 0.8;*/
+	width: 25%;
+	font-size:1.2rem;
+    bottom:0;
+    padding: 10px 25px;
+}
+.image-caption.text-light{
+	color: #fff;
+}
+.project-module-2 .image-container{
+	position: relative;
+	height: auto;
+	display: block;
+	overflow: hidden;
+}
+
+.project-module-2 .image-container img{
+	height: auto;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.project-module-2 .project-module-text-container .just-link{
+	margin-top:1rem;
+}
+.project-module-2 .image-caption .inner{
+	position: absolute;
+	z-index: 9;
+	bottom: 4rem;
+	font-size:1.2rem;
+}
+
+@media(max-width: 768px){
+	.project-module-2, .project-module-2 .image-container img, .project-module-2 .image-container, .project-module-2 .image-container img, .project-module-2 .project-module-text-container{
+		position: relative;
+		width: 100%;
+		display: block;
+		height: auto;
+	}
+	.project-module-2 .just-link{
+		position: relative;
+/*		margin-top:4rem;*/
+		bottom:auto;
+	}
+	.project-module-2 .image-caption{
+		position: relative;
+		display: block;
+		z-index: 9;
+		top: 0;
+		left:0;
+		opacity: 1;
+		width: auto;
+		height: auto;
+		font-size:1.2rem;
+	}
+	.project-module-2 .image-container{
+		position: relative;
+		height: auto;
+		overflow: hidden;
+	}
+	.project-module-2 .image-caption .inner{
+		position: relative;
+		z-index: 9;
+		bottom: 4rem;
+		font-size:1.2rem;
+	}
+}
+/* three */
+.project-module-3{
+	height:auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.project-module-3 .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	width: 50%;
+	height:auto;
+	position: relative;
+	float:right;
+	right:0;
+}
+.project-module-3 .image-container img{
+
+    float: right;
+    height: auto;
+    width: 100%;
+	max-width: none;
+}
+.project-module-3 .project-module-text-container{
+	width:calc(50% - 30px);
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+	height: auto;
+	margin:0;
+	z-index: 9;
+	text-align: left;
+	padding: 10px 25px;
+	position: absolute;
+}
+
+.project-module-3 .project-module-text-container .description, .project-module-3 .project-module-text-container .description *{
+	text-align: left;
+	display: inline;
+}
+.project-module-3 .project-module-text-container .title-link{
+	display: inline;
+	font-size: 2rem;
+}
+
+.project-module-3 .just-link{
+	display: inline;
+	position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 10px 25px;
+    font-family: "Styrene";
+    letter-spacing: -0.05rem;
+}
+.project-module-3 .just-link .just-link-link{
+	color: #ff9933;
+	text-decoration: none;
+}
+.project-module-3 .project-module-text-container .title-link{
+	color:inherit;
+	display: inline;
+	text-decoration: none;
+
+
+}
+.project-module-3 .project-module-text-container .title-link.text-light{
+	color:white;
+}
+/*reverseed*/
+.project-module-3-reversed{
+	height:auto;
+	padding: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.project-module-3-reversed .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	height:auto;
+	width: 50%;
+	position: relative;
+	z-index: 1;
+	left:0;
+}
+.project-module-3-reversed .image-container img{
+	/* width:100%; */
+/*	height: 80vh;*/
+    float: left;
+    height: auto;
+    width: 100%;
+	max-width: none;
+}
+.project-module-3-reversed .project-module-text-container{
+	width:calc(50% - 30px);
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block
+	z-index: 2;
+	height: auto;
+	float: right;
+	position: absolute;
+	right:0;
+	margin:0;
+	z-index: 9;
+	text-align: left;
+	padding: 10px 25px;
+}
+.project-module-3-reversed.swap-text .project-module-text-container .description{
+	font-family: 'GZA Seminegra';
+}
+
+.project-module-3-reversed .project-module-text-container .description, .project-module-3-reversed .project-module-text-container .description *{
+	text-align: left;
+	display: inline;
+}
+.project-module-3-reversed .project-module-text-container .title-link{
+	display: inline;
+	font-size: 2rem;
+}
+
+.project-module-3-reversed .just-link{
+	display: inline;
+	position: relative;
+    bottom: 0;
+    right: 0;
+    padding: 10px 25px;
+    font-family: "Styrene";
+    letter-spacing: -0.05rem;
+}
+.project-module-3-reversed.swap-text .just-link{
+	font-family: 'GZA Seminegra';
+}
+.project-module-3-reversed .just-link .just-link-link{
+	color: #ff9933;
+	text-decoration: none;
+}
+.project-module-3-reversed .project-module-text-container .title-link{
+	color:inherit;
+	display: inline;
+	text-decoration: none;
+}
+.project-module-3-reversed .project-module-text-container .title-link.text-light{
+	color:white;
+}
+@media(max-width: 768px){
+	.project-module-3{
+		display: block;
+		height:auto;
+		position: relative;
+		background-size: auto 100%;
+	}
+	.project-module-3 .project-module-text-container{
+		width: calc(100% - 30px);
+		height:auto;
+	
+	}
+	.project-module .image-container{
+		width:100%;
+		height:auto;
+		display: block;
+		position: relative;
+	}
+	.project-module .image-container img{}
+}
+
+/* project module 4*/
+
+.project-module-4{
+	height: auto;
+	font-size: 2rem;
+	font-size:0;
+}
+.project-module-4-images{
+	width: 100%;
+}
+.project-module-4-image{
+	display: inline-block;
+	width: 33.3333%;
+}
+.project-module-4 .project-module-text-container{
+	width: 50%;
+	padding: 10px 25px;
+	position:absolute;
+	top:0;
+/*	opacity:0.8;*/
+}
+.project-module-4 .description{
+	display: block;
+}
+.project-module-4 .project-module-text-container *{
+	display: inline;
+}
+.project-module-4 .project-module-text-container .description{
+	padding:10px 0;
+}
+.project-module-4 .just-link-link{
+	position: relative;
+	bottom:0;
+	left:0;
+	display: block;
+	font-family: "Styrene";
+	letter-spacing: -0.05rem;
+	font-size: 1rem; /* was 1.2 */
+}
+
+@media(max-width: 768px){
+	.project-module-4{
+		display: block;
+		height:auto;
+		position: relative;
+		background-size: auto 100%;
+	}
+	.project-module-4 .project-module-text-container{
+		width: 100%;
+
+	}
+}
+
+/* project module 5 */
+.project-module-5{
+	vertical-align: top;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+}
+.project-module-5 .image-container{
+	width:50%;
+	display: inline-block;
+    height: auto;
+}
+.project-module-5 .project-module-text-container{
+	font-size:1.2rem;
+	width: 50%;
+	padding: 0 25px;
+	vertical-align: top;
+	display: inline-block;
+	height: auto;
+	text-align: right;
+	bottom:0;
+}
+.project-module-5 .image-container img{
+	height: auto;
+	width:100%;
+}
+.project-module-5 .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	height:auto;
+	position: relative;
+	left:0;
+}
+
+.project-module-5 .project-module-text-container{
+	width:calc(50% - 50px);
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+	height: auto;
+	margin:0;
+	z-index: 9;
+	position: absolute;
+	float:right;
+	right:0;
+	text-align: right;
+	
+}
+.project-module-5 .just-link{
+	padding: 10px 25px;
+	position: relative;
+	float:right;
+	display: block;
+	width: 100%;
+
+}
+.project-module-5 .description p{
+	margin:0;
+	line-height: 4.2rem;
+}
+.project-module-5 .just-link .just-link-link{
+	color: #ff9933;
+	text-decoration: none;
+	font-size: 1rem; /* was 1.2 */
+	font-family: "Styrene";
+	letter-spacing: -0.05rem;
+
+}
+.project-module-5.swap-text .project-module-text-container .description{
+	font-family: "GZA Seminegra";
+}
+.project-module-5.swap-text .project-module-text-container .title-link{
+	font-family: "Styrene";
+	letter-spacing: -0.05rem;
+}
+.project-module-5 .title-link{
+	color:black;
+	text-decoration: none;
+	display: block;
+	float:right;
+	vertical-align: top;
+	padding: 10px 25px;
+	font-family: "Styrene";
+	letter-spacing: -0.05rem;
+	font-size: 2rem;
+}
+.project-module-5 .project-module-text-container .title-link.text-light{
+	color:white;
+}
+.project-module-5 .project-module-text-container .description{
+	max-width: 80%;
+	margin:0 auto;
+	display: block;
+	font-size: 4rem;
+	right:0;
+	position: relative;
+	float:right;
+	display: block;
+}
+.project-module .project-module-text-container .title-arrow{
+	font-family: "Styrene";
+	padding: 0 10px;
+	letter-spacing: -0.05rem;
+}
+
+@media(max-width: 768px){
+ 	.project-module-5, .project-module-5 .image-container img, .project-module-5 .image-container, .project-module-5 .image-container img, .project-module-5 .project-module-text-container{
+		position: relative;
+		width: 100%;
+		display: block;
+		height: auto;
+	}
+	.project-module-5 .project-module-text-container .description{
+		display: block;
+		position: relative;
+	}
+	.project-module-5 .just-link{
+		position: relative;
+		margin-top:4rem;
+		bottom:auto;
+	}
+}
+.project-module-video, .page-module-video{
+	height: auto;
+	width: 100%;
+	position: relative;
+	display: block;
+	font-size:0;
+}
+.project-module-video video, .page-module-video video{
+	display: block;
+	height:auto;
+	width: 100%;
+	margin:0;
+	padding:0;
+}
+.project-module-video img, .page-module-video img{
+	display: none;
+	width: 100%;
+}
+@media(max-width: 768px){
+
+	.project-module-video video, .page-module-video video{
+	display: none;
+
+	}
+	.project-module-video img, .page-module-video img{
+	display: block;
+	}
+}
+
+/* project module 6 */
+.project-module-6{
+	vertical-align: top;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.project-module-6 .project-module-text-container{
+	font-size:1.2rem;
+	vertical-align: bottom;
+	display: inline-block;
+}
+
+.project-module-6 .image-container{
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+	height: auto;
+	float:left;
+	position: relative;
+	left:0;
+	text-align:center;
+	width: 100%;
+}
+.project-module-6 .image-container img{
+	height:auto;
+	margin: 0 auto;
+	display: block;
+	width: 75%;
+}
+.project-module-6 .project-module-text-container{
+	width:25%;
+	font-size: 1rem; /* was 1.2 */
+	display: inline-block;
+	margin:0;
+	position: absolute;
+	z-index: 9;
+	left:0;
+	bottom:0;
+	text-align: left;
+	padding:110px 25px;
+/*	opacity: 0.5;*/
+}
+.project-module-6 .just-link{
+	display: block;
+	width: 100%;
+}
+.project-module-6 .just-link .just-link-link{
+	color: #ff9933;
+	text-decoration: none;
+	font-family: "Styrene";
+	letter-spacing: -0.05rem;
+}
+.project-module-6 .project-module-text-container .title-link{
+	
+	text-decoration: none;
+	font-family: "GZA Seminegra";
+}
+.project-module-6 .project-module-text-container .description{
+
+	margin:10px auto;
+	/*position: absolute;*/
+	bottom: 4rem;
+	left:15px;
+	display: block;
+	font-size: 1rem; /* was 1.2 */
+}
+@media(max-width: 768px){
+ 	.project-module-6, .project-module-6 .image-container img, .project-module-6 .image-container, .project-module-6 .image-container img, .project-module-6 .project-module-text-container{
+		position: relative;
+		width: 100%;
+		display: block;
+		height: auto;
+	}
+	.project-module-6 .just-link{
+		position: relative;
+		margin-top:4rem;
+		bottom:auto;
+	}
+}
+
+.project-module-7{
+
+}
+/**************** marquee ******************/
+
+.home .intro-studio{
+	background: white;
+	height: auto;
+	position: relative;	
+}
+.info-menu-outline{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 5%;
+}
+.info-menu-outline a{
+	display: block;
+	font-size: 4rem;
+	font-family: 'Styrene';
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+	color:white;
+}
+.info-menu-outline a:hover{
+	color:black;
+}
+.home .intro-studio .intro-text p{
+	margin:0;
+}
+.home .intro-studio .intro-text{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	display: inline-block;
+	left:0;
+	top:0;
+	z-index: 2;
+	width: 66.666%;
+	height: auto;
+	font-size: 4rem;
+	padding: 0 25px;
+	padding-bottom: 4rem;
+}
+.home .intro-studio .intro-text .just-link{
+	color: #0055ff;
+	vertical-align: top;
+	font-size: 1rem; /* was 1.2 */
+	margin-top: 1rem;
+	position: absolute;
+	display: inline-block;
+}
+.home .intro-studio .intro-image{
+	height: 80vh;
+	overflow: hidden;
+	position: absolute;
+	right:0;
+}
+.home .intro-studio img{
+	height: 80vh;
+	width: auto;
+	position: absolute;
+	right:0;
+}
+.marquee {
+    width: 100vw;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #0055ff;
+    color: white;
+    font-family: 'Styrene';
+    letter-spacing: -0.05rem;
+    box-sizing: border-box;
+}
+.marquee span{
+	margin: 0 50px;
+}
+
+.marquee p{
+    display: inline-block;
+    margin-top:0;
+    margin-bottom:0;
+    padding-left: 100%;  /* show the marquee just outside the paragraph */
+    animation: marquee 15s linear infinite;
+}
+
+
+/*.marquee span:hover {
+    animation-play-state: paused
+}*/
+
+/* Make it move */
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+/**************** Page MODULES ***************/
+
+/***album***/
+.album-module{
+	overflow: hidden;
+	font-size:0;
+	display: block;
+	align-items: center;
+	width: 100%;
+	position: relative;
+
+}	
+.album-intro{
+	font-size: 2rem;
+	position: absolute;
+	margin: 25px 0;
+	display: block;
+	width: 50%;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	left:0;
+	top:0;
+	text-align:center;
+}
+.album-links{
+	font-size: 1rem; /* was 1.2 */
+	position: absolute;
+	display: block;
+	bottom:15px;
+	width: 50%;
+	left:0;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	text-align:center;
+
+}
+
+.album-link{
+	padding: 5px 15px;
+}
+.album-text-container{
+	display:table-cell;
+	font-size: 4rem;
+	width:50%;
+	vertical-align: middle;
+	padding:15px;
+	text-align: center;
+
+}
+.album-info{
+  margin: 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.album-text-container h1{
+	font-size: 4rem;
+	vertical-align: middle;
+	margin: 0;
+
+}
+.page-wrapper{
+	background: white;
+}
+.album-text-container h1.artist{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 4rem;
+	margin: 0;
+}
+
+.album-image-container{	
+	display:table-cell;
+	width:50%;
+	position: relative;
+	margin-right: 25px;
+	vertical-align: middle;
+
+}
+.album-image-container .record{
+	width: 80%;
+	height: auto;
+	background-repeat: no-repeat;
+	background-size:cover;
+	border-radius: 100%;
+	position: relative;
+
+}
+.album-image-container .album-circle{
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+	position: absolute;
+	left: calc(40% - 30px);
+	top: calc(50% - 30px);
+}
+
+.tertiary-navigation.view-all-work{
+	text-align: center;
+	padding: 12px;
+}
+
+.project-page .tertiary-navigation{
+	background: #0055ff;
+	color: white;
+}
+.project-banner{
+	position: fixed;
+	z-index: -1;
+	overflow:hidden;
+	top:0;
+	left:0;
+	width: 100%;
+	font-size:0;
+}
+.banner-1{
+	display: block;
+	height: 80vh;
+}
+.banner-1 .project-banner-text, .project-banner-image{
+	display: inline-block;
+	width: 50%;
+	position: relative;
+	vertical-align: top;
+	height: auto;
+}
+.project-banner-text, .project-banner-image{
+	font-size: 4rem;
+}
+.banner-1 .project-banner-text {
+	padding: 10px 25px;
+	width: calc(50% - 50px);
+}
+.module-text p{
+	margin-top:0;
+	margin-bottom:0;
+}
+.project-banner-text .project-title{
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	margin:0;
+	font-weight: bolder;
+}
+.project-banner-text .project-descrip, .project-banner-text .project-descrip *{
+	margin:0;
+	/*margin-top: 15px;*/
+}
+.project-page .page-wrapper{
+	margin-top: 80vh;
+	background: white;
+}
+.project-page .project-tags{
+	position: absolute;
+	bottom:10px;
+	width: calc(50% - 50px);
+	padding: 10px 25px;
+	font-size: 1rem; /* was 1.2 */
+}
+.project-page .project-tags .tag{
+	font-size: 1rem; /* was 1.2 */
+}
+.banner-1 .project-banner-image{
+	width: 100%;
+	height: 80vh;
+	background-size: auto 80vh;
+	position: absolute;
+	right:0;
+	top:0;
+	z-index: -1;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.banner-2{
+	background-size:auto 80vh;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 80vh;
+}
+.banner-2 .project-banner-text{
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+}
+.banner-2 .project-banner-text .project-descrip{ 
+	margin-top: 25vh;
+}
+.banner-2 .project-tags{ 
+	margin-top: 25vh;
+}
+
+
+
+.banner-3{
+	background-size:auto 80vh;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 80vh;
+}
+.banner-3 .project-banner-text{
+	text-align: left;
+	display: block;
+	width: calc(75% - 50px);
+	padding: 10px 25px;
+}
+.banner-3 .project-banner-text .project-title{
+	display: inline;
+}
+.banner-3 .project-banner-text .project-descrip, .banner-3 .project-banner-text .project-descrip *{ 
+	display: inline;
+}
+.banner-3 .project-tags{ 
+	margin-top: 25vh;
+}
+
+.banner-4 .project-banner-image{
+	width: 100%;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    height: 80vh;
+    background-size: auto 80vh;
+    background-position: left;
+    display: inline-block;
+}
+.banner-4{
+	display: block;
+	height: 80vh;
+}
+.banner-4 .project-banner-text {
+	padding: 10px 25px;
+	width: calc(50% - 50px);
+	display: inline-block;
+	float: right;
+	text-align:center;
+}
+.banner-4 .project-tags{
+	display: block; 
+	margin:0 auto;
+	text-align:center;
+	width: 50%;
+	right: 0;
+}
+.page-module-1{
+	display: block;
+	font-size:0;
+	position: relative;
+	height: auto;
+}
+.page-module-1 .module-text{
+	width: calc(50% - 50px);
+	padding: 10px 25px;
+	display: inline-block;
+	height: auto;
+	font-size: 2rem;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	vertical-align: top;
+}
+
+.page-module-1 .module-image{
+	width: 50%;
+	height: auto;
+	display: inline-block;
+}
+/*reversed*/
+.page-module-1-reversed{
+	display: block;
+	font-size:0;
+	position: relative;
+	height: auto;
+}
+.page-module-1-reversed .module-text{
+	width: calc(50% - 50px);
+	padding: 10px 25px;
+	display: inline-block;
+	height: auto;
+	font-size: 2rem;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	vertical-align: top;
+}
+.page-module-1-reversed.swap-text .module-text, .page-module-1.swap-text .module-text{
+	font-family: 'GZA Seminegra';
+}
+.page-module-1-reversed .module-image{
+	width: 50%;
+	height: auto;
+	display: inline-block;
+}
+.text-light .module-text{
+	color: white;
+}
+.page-module-2{
+	font-size:0;
+	text-align: center;
+	position: relative;
+}
+.page-module-2 .module-text{
+	padding: 10px 25px;
+	display: none;
+	position: absolute;
+	top:0;
+}
+.page-module-2{
+	height:auto;
+}
+.page-module-2 img{
+	height: auto;
+	width: 100%;
+}
+.text-light .module-caption{
+	color:white;
+}
+.page-module-2 .module-caption{
+	font-size:1.2rem;
+	padding: 10px;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.page-module-2 .module-caption *{
+	padding:0;
+	margin:0;
+}
+
+.page-module-3{
+	text-align: center;
+	height:auto;
+	font-size:0;
+}
+.page-module-3 .module-text{
+	padding: 10px 25px;
+	width: calc(50% - 50px);
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	font-size: 4rem;
+}
+.page-module-3 img{
+	width: 50%;
+	position: relative;
+	display: inline-block;
+}
+
+.page-module-3 .module-caption{
+	font-size:1.2rem;
+	padding: 2px 5px;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.page-module-3 .module-caption p{
+	margin:0;
+}
+.page-module-4{
+	display: block;
+	font-size:0;
+	position: relative;
+	height: auto;
+}
+.page-module-4 .module-text{
+	width: calc(33% - 50px);
+	padding: 10px 25px;
+	display: inline-block;
+	height: auto;
+	font-size: 2rem;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	vertical-align: top;
+	position: relative;
+	z-index: 1;
+}
+.page-module-4.swap-text .module-text{
+	font-family: 'GZA Seminegra';
+}
+
+.page-module-4 .module-image{
+	width: 66%;
+	position: relative;
+	height: auto;
+	vertical-align: top;
+	display: inline-block;
+	z-index: 0;
+}
+
+/* Page module double */
+.page-module-double{
+	text-align: center;
+	position: relative;
+}
+.page-module-double .module-text{
+	padding: 10px 25px;
+	display: none;
+	position: absolute;
+	top:0;
+}
+.page-module-double{
+	height:auto;
+}
+.page-module-double img{
+	height: auto;
+	width: 50%;
+	vertical-align: top;
+	display: inline-block;
+}
+.page-module-double .module-caption{
+	font-size:1.2rem;
+	padding: 10px;
+
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.page-module-double .module-caption *{
+	padding:0;
+	margin:0;
+}
+
+.page-module-5{
+	display: block;
+	font-size:0;
+	width: 100%;
+
+	position: relative;
+}
+.page-module-5 .module-text{
+	width: calc(33% - 50px);
+	padding: 10px 25px;
+	display: inline-block;
+
+	position: relative;
+	z-index: 1;
+	font-size: 2rem;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	vertical-align: top;
+}
+
+.page-module-5 .module-image{
+	width: 66.6666%;
+	position: relative;
+	z-index: 0;
+
+	display: inline-block;
+}
+.project-info-overview-title, .project-info-credits-title{
+	font-size: 1rem; /* was 1.2 */
+	text-decoration: underline;
+	font-weight: normal;
+}
+.project-info-overview, .project-info-credits{
+	display: inline-block;
+	font-size: 1rem; /* was 1.2 */
+	vertical-align: top;
+}
+#project-info-trigger{
+	cursor: pointer;
+}
+.project-info-box{
+	font-size: 0;
+	max-height:0;
+	overflow: hidden;
+	transition: 0.2s;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+}
+.project-info-box.expanded{
+	max-height: 80vh;
+}
+.project-info-overview{
+	width: calc(66% - 25px);
+	padding-right: 25px;
+	font-size: 2rem;
+}
+.project-info-credits{
+	width: calc(33% - 25px);
+	padding-left: 25px;
+}
+
+.next-project-banner{
+	background: black;
+	color: white;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	font-size: 1rem; /* was 1.2 */
+	padding: 10px 25px;
+}
+.next-project{
+	background: #0055ff;
+	height: auto;
+	position: relative;
+	display: block;
+	width: 100%;
+	font-size:0;
+}
+.next-project-title{
+	display: inline;
+	font-size: 2rem;
+	font-weight: normal;
+	color:white;
+}
+.next-project-text{
+	width: calc(50% - 50px);
+	padding: 110px 25px;
+	display: inline-block;
+	height: auto;
+	vertical-align: top;
+	position: relative;
+	z-index: 1;
+}
+.next-project-description{
+	display: inline;
+	font-size: 2rem;
+	font-weight: normal;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+	color: white;
+}
+.next-project-description p{
+	margin:5px 0;
+}
+.next-project-link{
+	font-size: 1rem; /* was 1.2. */
+	color: white;
+	display: inline-block;
+	position: relative;
+	font-family: 'Styrene';
+	letter-spacing: -0.05rem;
+}
+.next-project-image-wrapper{
+	overflow: hidden;
+}
+.next-project-image{
+	height: auto;
+	position: relative;
+	right:0;
+	z-index: 0;
+	top:0;
+	width: 50%;
+	display: inline-block;
+}
